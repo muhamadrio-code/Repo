@@ -6,6 +6,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.riopermana.core.data.datastore.model.UserData
 import com.riopermana.core.model.DarkThemeConfig
@@ -23,14 +24,16 @@ class PreferencesDataSource @Inject constructor(
 
     private object PreferencesKeys {
         val DARK_THEME_CONFIG = intPreferencesKey("dark_theme_config")
+        val FAV_REPO = stringSetPreferencesKey("favorite_repo")
     }
 
-    val userData = preferencesDataStore.data.map { preferences ->
+    val userDataFlow = preferencesDataStore.data.map { preferences ->
         UserData(
             darkThemeConfig = DarkThemeConfig.values().first {
                 it.mode == (preferences[PreferencesKeys.DARK_THEME_CONFIG]
                     ?: AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            }
+            },
+            favoriteRepoIds = preferences[PreferencesKeys.FAV_REPO] ?: emptySet()
         )
     }
 
@@ -38,6 +41,25 @@ class PreferencesDataSource @Inject constructor(
         runCatching {
             preferencesDataStore.edit {
                 it[PreferencesKeys.DARK_THEME_CONFIG] = darkThemeConfig.mode
+            }
+        }.onFailure {
+            Timber.tag("Preferences").e("Failed to update user preferences")
+        }
+    }
+
+    suspend fun toggleFavoriteRepo(repoId:Int, isFavorite: Boolean) {
+        runCatching {
+            val strRepoId = repoId.toString()
+            preferencesDataStore.edit { pref ->
+                pref[PreferencesKeys.FAV_REPO]?.let {
+                    if (isFavorite){
+                        pref[PreferencesKeys.FAV_REPO] = it.plus(strRepoId)
+                    } else  {
+                        pref[PreferencesKeys.FAV_REPO] = it.minus(strRepoId)
+                    }
+                } ?: run {
+                    pref[PreferencesKeys.FAV_REPO] = setOf(strRepoId)
+                }
             }
         }.onFailure {
             Timber.tag("Preferences").e("Failed to update user preferences")
