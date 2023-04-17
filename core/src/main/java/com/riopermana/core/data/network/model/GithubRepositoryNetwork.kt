@@ -117,7 +117,7 @@ data class GithubRepositoryNetwork(
     @SerializedName("open_issues_count")
     val openIssuesCount: Int?,
     @SerializedName("owner")
-    val owner: RepoOwner?,
+    val owner: OwnerNetwork?,
     @SerializedName("private")
     val isPrivate: Boolean?,
     @SerializedName("pulls_url")
@@ -148,8 +148,6 @@ data class GithubRepositoryNetwork(
     val tagsUrl: String?,
     @SerializedName("teams_url")
     val teamsUrl: String?,
-    @SerializedName("topics")
-    val topics: List<String?>?,
     @SerializedName("trees_url")
     val treesUrl: String?,
     @SerializedName("updated_at")

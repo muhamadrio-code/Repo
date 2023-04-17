@@ -3,7 +3,7 @@ package com.riopermana.core.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class RepoOwner(
+data class OwnerNetwork(
     @SerializedName("avatar_url")
     val avatarUrl: String?,
     @SerializedName("events_url")
