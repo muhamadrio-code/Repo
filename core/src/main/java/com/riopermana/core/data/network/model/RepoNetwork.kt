@@ -3,7 +3,7 @@ package com.riopermana.core.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class GithubRepositoryNetwork(
+data class RepoNetwork(
     @SerializedName("allow_forking")
     val allowForking: Boolean?,
     @SerializedName("archive_url")
@@ -81,7 +81,7 @@ data class GithubRepositoryNetwork(
     @SerializedName("html_url")
     val htmlUrl: String?,
     @SerializedName("id")
-    val id: Int?,
+    val id: Int,
     @SerializedName("is_template")
     val isTemplate: Boolean?,
     @SerializedName("issue_comment_url")
@@ -98,14 +98,12 @@ data class GithubRepositoryNetwork(
     val language: String?,
     @SerializedName("languages_url")
     val languagesUrl: String?,
-    @SerializedName("license")
-    val license: Any?,
     @SerializedName("merges_url")
     val mergesUrl: String?,
     @SerializedName("milestones_url")
     val milestonesUrl: String?,
     @SerializedName("mirror_url")
-    val mirrorUrl: Any?,
+    val mirrorUrl: String?,
     @SerializedName("name")
     val name: String?,
     @SerializedName("node_id")

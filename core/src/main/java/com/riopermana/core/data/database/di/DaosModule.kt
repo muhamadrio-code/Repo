@@ -14,9 +14,4 @@ object DaosModule {
     @Singleton
     @Provides
     fun provideRepoDao(database: RepoDatabase) = database.repoDao
-
-    @Singleton
-    @Provides
-    fun provideOwnerDao(database: RepoDatabase) = database.ownerDao
-
 }

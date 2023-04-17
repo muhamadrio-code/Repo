@@ -8,5 +8,5 @@ data class ResponseData(
     @field:SerializedName("incomplete_results")
     val incompleteResults: Boolean,
     @field:SerializedName("items")
-    val items: List<GithubRepositoryNetwork>,
+    val items: List<RepoNetwork>,
 )

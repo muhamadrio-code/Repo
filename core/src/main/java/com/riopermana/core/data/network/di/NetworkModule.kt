@@ -4,7 +4,11 @@ import com.google.gson.GsonBuilder
 import com.riopermana.core.BuildConfig
 import com.riopermana.core.data.network.ApiService
 import com.riopermana.core.data.network.GithubRepoApiInterceptor
+import com.riopermana.core.data.network.RetrofitRemoteDataSource
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
@@ -12,6 +16,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     @Provides
@@ -43,4 +49,10 @@ object NetworkModule {
         .addConverterFactory(retrofitConverterFactory)
         .build()
         .create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun providesRemoteDataSource(
+        apiService: ApiService
+    ) = RetrofitRemoteDataSource(apiService)
 }
