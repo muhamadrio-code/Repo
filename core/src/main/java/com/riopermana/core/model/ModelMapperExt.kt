@@ -11,7 +11,7 @@ private fun OwnerNetwork.toMinimalModel() = Owner(
     login = this.login
 )
 
-fun RepoNetwork.toExternalMinimalModel() = Repo(
+internal fun RepoNetwork.toExternalMinimalModel() = Repo(
     description = this.description,
     forksCount = this.forksCount,
     fullName = this.fullName,
@@ -23,7 +23,7 @@ fun RepoNetwork.toExternalMinimalModel() = Repo(
     watchersCount = this.watchersCount
 )
 
-fun RepoNetwork.toEntityMinimalModel() = RepoMinimalEntity(
+internal fun RepoNetwork.toEntityMinimalModel() = RepoMinimalEntity(
     owner = this.owner?.toMinimalModel(),
     description = this.description,
     forksCount = this.forksCount,
@@ -35,7 +35,7 @@ fun RepoNetwork.toEntityMinimalModel() = RepoMinimalEntity(
     watchersCount = this.watchersCount
 )
 
-fun RepoMinimalEntity.toExternalMinimalModel() = Repo(
+internal fun RepoMinimalEntity.toExternalMinimalModel() = Repo(
     description = this.description,
     forksCount = this.forksCount,
     fullName = this.fullName,
