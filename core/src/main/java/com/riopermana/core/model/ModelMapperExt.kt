@@ -20,7 +20,8 @@ internal fun RepoNetwork.toExternalMinimalModel() = Repo(
     language = this.language,
     name = this.name,
     owner = this.owner?.toMinimalModel(),
-    watchersCount = this.watchersCount
+    watchersCount = this.watchersCount,
+    stargazersCount = this.stargazersCount ?: 0
 )
 
 internal fun RepoNetwork.toEntityMinimalModel() = RepoMinimalEntity(
@@ -32,7 +33,8 @@ internal fun RepoNetwork.toEntityMinimalModel() = RepoMinimalEntity(
     id = this.id,
     language = this.language,
     name = this.name,
-    watchersCount = this.watchersCount
+    watchersCount = this.watchersCount,
+    stargazersCount = this.stargazersCount ?: 0
 )
 
 internal fun RepoMinimalEntity.toExternalMinimalModel() = Repo(
@@ -44,6 +46,7 @@ internal fun RepoMinimalEntity.toExternalMinimalModel() = Repo(
     language = this.language,
     name = this.name,
     owner = this.owner,
-    watchersCount = this.watchersCount
+    watchersCount = this.watchersCount,
+    stargazersCount = this.stargazersCount ?: 0
 )
 

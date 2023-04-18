@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="8dp"
+  >
+
+  <TextView
+    android:id="@+id/owner_name"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    android:textSize="14sp"
+    app:layout_constraintBottom_toBottomOf="@+id/owner_picture"
+    app:layout_constraintEnd_toStartOf="@+id/favoriteBtn"
+    app:layout_constraintStart_toEndOf="@+id/owner_picture"
+    app:layout_constraintTop_toTopOf="@+id/owner_picture"
+    tools:text="RIO/Text-view" />
+
+  <ImageView
+    android:id="@+id/owner_picture"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="4dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:srcCompat="@tools:sample/avatars" />
+
+  <TextView
+    android:id="@+id/repo_fullname"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/owner_picture"
+    tools:text="RIO/Text-view" />
+
+  <TextView
+    android:id="@+id/repo_description"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:ellipsize="end"
+    android:maxLines="3"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/repo_fullname"
+    tools:text="RIO/Text-viewRIO/Text-viewRIO/Text-viewRIO/Text-viewRIO/Text-viewRIO/Text-view" />
+
+  <TextView
+    android:id="@+id/star_count"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:drawablePadding="8dp"
+    android:ellipsize="end"
+    android:gravity="center_vertical"
+    android:textSize="14sp"
+    app:drawableStartCompat="@drawable/ic_star_filled"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/repo_description"
+    tools:text="213" />
+
+  <TextView
+    android:id="@+id/repo_language"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:drawablePadding="8dp"
+    android:ellipsize="end"
+    android:gravity="center_vertical"
+    android:textSize="14sp"
+    android:background="@drawable/background_a"
+    android:paddingHorizontal="16dp"
+    app:layout_constraintBottom_toBottomOf="@+id/star_count"
+    app:layout_constraintStart_toEndOf="@+id/star_count"
+    app:layout_constraintTop_toTopOf="@+id/star_count"
+    tools:text="Kotlin" />
+
+  <CheckBox
+    android:id="@+id/favoriteBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_margin="8dp"
+    android:button="@android:color/transparent"
+    android:drawableStart="@drawable/favorite_star"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="TouchTargetSizeCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

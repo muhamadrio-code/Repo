@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import com.riopermana.core.BuildConfig
 import com.riopermana.core.data.network.ApiService
 import com.riopermana.core.data.network.GithubRepoApiInterceptor
+import com.riopermana.core.data.network.RemoteDataSource
 import com.riopermana.core.data.network.RetrofitRemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -54,5 +55,5 @@ object NetworkModule {
     @Singleton
     fun providesRemoteDataSource(
         apiService: ApiService
-    ) = RetrofitRemoteDataSource(apiService)
+    ): RemoteDataSource = RetrofitRemoteDataSource(apiService)
 }

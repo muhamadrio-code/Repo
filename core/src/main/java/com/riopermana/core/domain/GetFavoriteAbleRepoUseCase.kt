@@ -1,5 +1,6 @@
 package com.riopermana.core.domain
 
+import com.riopermana.core.data.Resource
 import com.riopermana.core.data.repositories.RepoRepository
 import com.riopermana.core.data.repositories.UserDataRepository
 import com.riopermana.core.model.FavoriteAbleRepo
@@ -11,15 +12,16 @@ class GetFavoriteAbleRepoUseCase @Inject constructor(
     private val repoRepository: RepoRepository,
     private val userDataRepository: UserDataRepository
 ) {
-    operator fun invoke(query: String) : Flow<List<FavoriteAbleRepo>> {
-        return combine(repoRepository.getRepos(query), userDataRepository.userDataFlow) { repos, userData ->
+    operator fun invoke(query: String) : Flow<Resource<List<FavoriteAbleRepo>>> {
+        return combine(repoRepository.getRepos(query), userDataRepository.userDataFlow) { resource, userData ->
             val favoriteRepoIds = userData.favoriteRepoIds.map(String::toInt)
-            repos.map { repo ->
+            val data = resource.data?.map { repo ->
                 FavoriteAbleRepo(
                     repo = repo,
                     isFavorite = repo.id in favoriteRepoIds
                 )
             }
+            Resource(state = resource.state, data = data, throwable = resource.throwable)
         }
     }
 }

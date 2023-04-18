@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item android:id="@+id/searchFragment"
+    app:showAsAction="ifRoom"
+    android:title="@string/search"
+    android:icon="@drawable/ic_search"
+    />
+
+  <item android:id="@+id/favoriteFragment"
+    app:showAsAction="always"
+    android:title="@string/favorite"
+    android:icon="@drawable/ic_heart_filled"
+    />
+
+  <item android:id="@+id/settingsFragment"
+    app:showAsAction="always"
+    android:title="@string/settings"
+    android:icon="@drawable/ic_settings"
+    />
+</menu>

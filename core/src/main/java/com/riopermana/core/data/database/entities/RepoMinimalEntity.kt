@@ -25,5 +25,7 @@ data class RepoMinimalEntity(
     @ColumnInfo("name")
     val name: String?,
     @ColumnInfo("watchers_count")
-    val watchersCount: Int?
+    val watchersCount: Int?,
+    @ColumnInfo("stargazzers_count")
+    val stargazersCount: Int?
 )

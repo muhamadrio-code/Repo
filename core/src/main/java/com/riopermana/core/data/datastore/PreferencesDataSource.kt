@@ -52,6 +52,7 @@ class PreferencesDataSource @Inject constructor(
             val strRepoId = repoId.toString()
             preferencesDataStore.edit { pref ->
                 pref[PreferencesKeys.FAV_REPO]?.let {
+                    Timber.d("FAV_REPO:: ${it.toList()}")
                     if (isFavorite){
                         pref[PreferencesKeys.FAV_REPO] = it.plus(strRepoId)
                     } else  {

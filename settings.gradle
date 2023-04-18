@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "Repo"
 include ':app'
 include ':core'
+include ':feature:search'
+include ':feature:settings'

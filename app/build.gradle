@@ -18,7 +18,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildFeatures {
+        viewBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -36,3 +38,7 @@ android {
 
 apply from: '../shared_dependencies.gradle'
 
+dependencies {
+    implementation project(':core')
+    implementation project(':feature:search')
+}
