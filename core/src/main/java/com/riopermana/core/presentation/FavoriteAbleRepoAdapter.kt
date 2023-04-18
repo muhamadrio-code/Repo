@@ -16,6 +16,7 @@ class FavoriteAbleRepoAdapter :
     ) {
 
     private var toggleFavoriteClickListener: ((FavoriteAbleRepo) -> Unit)? = null
+    private var onItemClickListener: ((Int) -> Unit)? = null
 
     inner class FavoriteAbleRepoViewHolder(private val binding: RepoItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -27,15 +28,19 @@ class FavoriteAbleRepoAdapter :
                     RecyclerView.LayoutParams.MATCH_PARENT,
                     RecyclerView.LayoutParams.WRAP_CONTENT
                 )
-                repoFullname.text = item.repo.fullName
+                tvRepoFullname.text = item.repo.fullName
                 favoriteBtn.isChecked = item.isFavorite
                 ownerPicture.load(owner?.avatarUrl){
                     transformations(CircleCropTransformation())
                 }
-                ownerName.text = owner?.login
-                repoDescription.text = repo.description
+                tvOwnerName.text = owner?.login
+                tvRepoDescription.text = repo.description
                 repoLanguage.text = repo.language
-                starCount.text = repo.stargazersCount.toString()
+                tvStarCount.text = repo.stargazersCount.toString()
+
+                root.setOnClickListener {
+                    onItemClickListener?.invoke(item.repo.id)
+                }
 
                 favoriteBtn.setOnClickListener {
                     toggleFavoriteClickListener?.invoke(
@@ -51,6 +56,10 @@ class FavoriteAbleRepoAdapter :
 
     fun setToggleFavoriteClickListener(listener: (FavoriteAbleRepo) -> Unit) {
         toggleFavoriteClickListener = listener
+    }
+
+    fun setOnItemClickListener(listener: (Int) -> Unit) {
+        onItemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAbleRepoViewHolder {

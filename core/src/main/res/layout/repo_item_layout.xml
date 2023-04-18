@@ -8,7 +8,7 @@
   >
 
   <TextView
-    android:id="@+id/owner_name"
+    android:id="@+id/tv_owner_name"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -31,7 +31,7 @@
     tools:srcCompat="@tools:sample/avatars" />
 
   <TextView
-    android:id="@+id/repo_fullname"
+    android:id="@+id/tv_repo_fullname"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -43,7 +43,7 @@
     tools:text="RIO/Text-view" />
 
   <TextView
-    android:id="@+id/repo_description"
+    android:id="@+id/tv_repo_description"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -52,11 +52,11 @@
     android:textSize="14sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/repo_fullname"
+    app:layout_constraintTop_toBottomOf="@+id/tv_repo_fullname"
     tools:text="RIO/Text-viewRIO/Text-viewRIO/Text-viewRIO/Text-viewRIO/Text-viewRIO/Text-view" />
 
   <TextView
-    android:id="@+id/star_count"
+    android:id="@+id/tv_star_count"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -67,7 +67,7 @@
     app:drawableStartCompat="@drawable/ic_star_filled"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/repo_description"
+    app:layout_constraintTop_toBottomOf="@+id/tv_repo_description"
     tools:text="213" />
 
   <TextView
@@ -81,9 +81,9 @@
     android:textSize="14sp"
     android:background="@drawable/background_a"
     android:paddingHorizontal="16dp"
-    app:layout_constraintBottom_toBottomOf="@+id/star_count"
-    app:layout_constraintStart_toEndOf="@+id/star_count"
-    app:layout_constraintTop_toTopOf="@+id/star_count"
+    app:layout_constraintBottom_toBottomOf="@+id/tv_star_count"
+    app:layout_constraintStart_toEndOf="@+id/tv_star_count"
+    app:layout_constraintTop_toTopOf="@+id/tv_star_count"
     tools:text="Kotlin" />
 
   <CheckBox
@@ -92,7 +92,7 @@
     android:layout_height="40dp"
     android:layout_margin="8dp"
     android:button="@android:color/transparent"
-    android:drawableStart="@drawable/favorite_star"
+    android:drawableStart="@drawable/favorite_heart_icon"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:ignore="TouchTargetSizeCheck" />

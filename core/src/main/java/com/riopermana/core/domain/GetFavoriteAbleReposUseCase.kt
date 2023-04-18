@@ -8,27 +8,20 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
 
-class GetFavoriteAbleRepoUseCase @Inject constructor(
+class GetFavoriteAbleReposUseCase @Inject constructor(
     private val repoRepository: RepoRepository,
     private val userDataRepository: UserDataRepository
 ) {
-    operator fun invoke(repoId: Int): Flow<Resource<FavoriteAbleRepo>> {
-        return combine(
-            repoRepository.getRepo(repoId),
-            userDataRepository.userDataFlow
-        ) { resource, userData ->
+    operator fun invoke(query: String) : Flow<Resource<List<FavoriteAbleRepo>>> {
+        return combine(repoRepository.getRepos(query), userDataRepository.userDataFlow) { resource, userData ->
             val favoriteRepoIds = userData.favoriteRepoIds.map(String::toInt)
-            val repo = resource.data
-
-            if (repo != null){
-                val data = FavoriteAbleRepo(
+            val data = resource.data?.map { repo ->
+                FavoriteAbleRepo(
                     repo = repo,
                     isFavorite = repo.id in favoriteRepoIds
                 )
-                return@combine Resource(state = resource.state, data = data)
-            } else {
-                return@combine Resource(state = resource.state, data = null, resource.throwable)
             }
+            Resource(state = resource.state, data = data, throwable = resource.throwable)
         }
     }
 }

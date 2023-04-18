@@ -3,6 +3,7 @@ package com.riopermana.repo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.riopermana.repo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        binding.bottomNavigation.setupWithNavController(
-//            findNavController(binding.fragmentContainer.id)
-//        )
+        val navHost = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+        binding.bottomNavigation.setupWithNavController(
+            navHost.navController
+        )
     }
 }

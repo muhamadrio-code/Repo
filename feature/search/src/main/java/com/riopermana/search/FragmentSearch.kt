@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.riopermana.core.data.ResourceState
@@ -60,6 +63,16 @@ class FragmentSearch : Fragment(), SearchView.OnQueryTextListener {
         adapter = FavoriteAbleRepoAdapter()
         adapter.setToggleFavoriteClickListener {
             viewModel.toggleFavoriteRepo(it)
+        }
+        adapter.setOnItemClickListener { repoId ->
+            val request = NavDeepLinkRequest.Builder
+                .fromUri(
+                    getString(com.riopermana.core.R.string.repo_details_deeplink).replace(
+                        "{repoId}",
+                        repoId.toString()
+                    ).toUri()
+                ).build()
+            findNavController().navigate(request)
         }
         val itemDecorator = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
         binding.repoList.addItemDecoration(itemDecorator)

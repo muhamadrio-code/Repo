@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  >
+
+  <ImageButton
+    android:id="@+id/btn_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_arrow_back"
+    android:layout_margin="16dp"
+    android:background="@android:color/transparent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+
+  <TextView
+    android:id="@+id/tv_owner_name"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    app:layout_constraintBottom_toBottomOf="@+id/owner_picture"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/owner_picture"
+    app:layout_constraintTop_toTopOf="@+id/owner_picture"
+    app:layout_constraintVertical_bias="0.5"
+    tools:text="Rest" />
+
+  <ImageView
+    android:id="@+id/owner_picture"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="32dp"
+    android:layout_marginStart="16dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/btn_back"
+    tools:srcCompat="@tools:sample/avatars" />
+
+  <TextView
+    android:id="@+id/tv_repo_fullname"
+    style="@style/TextAppearance.MaterialComponents.Headline5"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:textSize="26sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="@+id/tv_owner_name"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="@+id/owner_picture"
+    app:layout_constraintTop_toBottomOf="@+id/owner_picture"
+    tools:text="Rest" />
+
+  <TextView
+    android:id="@+id/tv_repo_description"
+    style="@style/TextAppearance.MaterialComponents.Body2"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="@+id/tv_repo_fullname"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="@+id/tv_repo_fullname"
+    app:layout_constraintTop_toBottomOf="@+id/tv_repo_fullname"
+    tools:text="Rest" />
+
+  <View
+    android:id="@+id/divider1"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_marginVertical="16dp"
+    android:background="?attr/colorSurfaceVariant"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/btn_github" />
+
+  <Button
+    android:id="@+id/btn_github"
+    style="@style/App.GithubButton"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tv_repo_description"
+    android:text="@string/github"/>
+
+  <TextView
+    android:id="@+id/tv_stars"
+    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:drawablePadding="16dp"
+    android:gravity="center_vertical"
+    android:text="@string/stars"
+    app:drawableStartCompat="@drawable/star_icon"
+    app:layout_constraintEnd_toStartOf="@+id/tv_stars_count"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+  <TextView
+    android:id="@+id/tv_forks"
+    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="16dp"
+    android:drawablePadding="16dp"
+    android:gravity="center_vertical"
+    android:text="@string/forks"
+    app:drawableStartCompat="@drawable/forks_icon"
+    app:layout_constraintStart_toStartOf="@+id/tv_stars"
+    app:layout_constraintTop_toBottomOf="@+id/tv_stars" />
+
+  <TextView
+    android:id="@+id/tv_watcher"
+    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="16dp"
+    android:drawablePadding="16dp"
+    android:gravity="center_vertical"
+    android:text="@string/watcher"
+    app:drawableStartCompat="@drawable/watcher_icon"
+    app:layout_constraintStart_toStartOf="@+id/tv_forks"
+    app:layout_constraintTop_toBottomOf="@+id/tv_forks" />
+
+  <TextView
+    android:id="@+id/tv_stars_count"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    app:layout_constraintBaseline_toBaselineOf="@+id/tv_stars"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:text="1231" />
+
+  <TextView
+    android:id="@+id/tv_forks_count"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    app:layout_constraintBaseline_toBaselineOf="@+id/tv_forks"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:text="1231" />
+
+  <TextView
+    android:id="@+id/tv_watcher_count"
+    style="@style/TextAppearance.MaterialComponents.Body1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    app:layout_constraintBaseline_toBaselineOf="@+id/tv_watcher"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:text="1231" />
+
+  <View
+    android:id="@+id/divider2"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_marginVertical="16dp"
+    android:layout_marginTop="15dp"
+    android:background="?attr/colorSurfaceVariant"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tv_watcher" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="App.GithubButton" parent="Widget.Material3.Button">
+    <item name="android:text">GitHub</item>
+    <item name="android:textAllCaps">false</item>
+    <item name="android:textStyle">bold</item>
+    <item name="icon">@drawable/ic_github</item>
+    <item name="backgroundTint">?attr/colorOnSurface</item>
+  </style>
+</resources>

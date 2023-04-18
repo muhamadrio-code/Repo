@@ -2,7 +2,7 @@ package com.riopermana.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.riopermana.core.domain.GetFavoriteAbleRepoUseCase
+import com.riopermana.core.domain.GetFavoriteAbleReposUseCase
 import com.riopermana.core.domain.ToggleFavoriteRepoUseCase
 import com.riopermana.core.model.FavoriteAbleRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,13 +14,13 @@ import javax.inject.Inject
 @OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    getFavoriteAbleRepoUseCase: GetFavoriteAbleRepoUseCase,
+    getFavoriteAbleReposUseCase: GetFavoriteAbleReposUseCase,
     private val toggleFavoriteRepoUseCase: ToggleFavoriteRepoUseCase
 ) : ViewModel() {
 
     private val query = MutableStateFlow("language:kotlin")
     val resourceStateFlow = query
-        .flatMapLatest(getFavoriteAbleRepoUseCase::invoke)
+        .flatMapLatest(getFavoriteAbleReposUseCase::invoke)
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(),
