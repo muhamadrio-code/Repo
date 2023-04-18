@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="settings_tittle">Settings</string>
+  <string name="default_system">Default System</string>
+  <string name="dark">Dark</string>
+  <string name="light">Light</string>
+  <string name="select_theme">Select Theme</string>
+  <string name="cancel">Cancel</string>
+  <string name="select">Select</string>
+</resources>

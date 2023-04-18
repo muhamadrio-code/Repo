@@ -2,10 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/main_navigation"
-  app:startDestination="@id/fragmentSearch">
-
+  app:startDestination="@id/settingsFragment">
   <fragment
-    android:id="@+id/fragmentSearch"
-    android:name="com.riopermana.search.FragmentSearch"
-    android:label="FragmentSearch" />
+    android:id="@+id/settingsFragment"
+    android:name="com.riopermana.settings.SettingsFragment"
+    android:label="SettingsFragment" />
 </navigation>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:title="Settings"
+  app:title="Settings">
+  <Preference android:title="Theme"
+    app:icon="@drawable/ic_dark_mode"
+    android:summary="Default System"
+    android:key="theme"
+    />
+  <Preference android:title="Language"
+    android:summary="English"
+    android:key="language"
+    app:icon="@drawable/ic_language"
+    />
+
+</PreferenceScreen>

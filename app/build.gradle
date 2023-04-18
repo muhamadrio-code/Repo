@@ -41,4 +41,5 @@ apply from: '../shared_dependencies.gradle'
 dependencies {
     implementation project(':core')
     implementation project(':feature:search')
+    implementation project(':feature:settings')
 }
