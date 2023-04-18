@@ -2,6 +2,7 @@ package com.riopermana.core.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,7 @@ class FavoriteAbleRepoAdapter :
                 }
                 tvOwnerName.text = owner?.login
                 tvRepoDescription.text = repo.description
+                repoLanguage.isVisible = repo.language.isNullOrEmpty()
                 repoLanguage.text = repo.language
                 tvStarCount.text = repo.stargazersCount.toString()
 

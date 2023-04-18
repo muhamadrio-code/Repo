@@ -6,5 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface RepoRepository {
     fun getRepos(query: String): Flow<Resource<List<Repo>>>
+    fun getReposByIds(ids: List<Int>): Flow<Resource<List<Repo>>>
     fun getRepo(id:Int): Flow<Resource<Repo>>
 }

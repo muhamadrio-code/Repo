@@ -9,7 +9,6 @@
     android:key="theme"
     />
   <Preference android:title="Language"
-    android:summary="English"
     android:key="language"
     app:icon="@drawable/ic_language"
     />

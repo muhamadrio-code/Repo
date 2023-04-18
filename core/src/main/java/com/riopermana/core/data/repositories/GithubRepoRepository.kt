@@ -54,5 +54,19 @@ class GithubRepoRepository @Inject constructor(
             }
         }
     }
+
+    override fun getReposByIds(ids: List<Int>): Flow<Resource<List<Repo>>> {
+        return flow {
+            emit(Resource(state = ResourceState.Loading))
+            with(database.repoDao){
+                runCatching {
+                    val data = getReposMinimal(ids).first().map(RepoMinimalEntity::toExternalMinimalModel)
+                    emit(Resource(state = ResourceState.Success, data = data))
+                }.onFailure {
+                    emit(Resource(state = ResourceState.Error, throwable = it))
+                }
+            }
+        }
+    }
 }
 
