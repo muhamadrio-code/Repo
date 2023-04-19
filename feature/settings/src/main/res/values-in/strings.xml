@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="settings_tittle">Pengaturan</string>
+  <string name="default_system">Bawaan Sistem</string>
+  <string name="dark">Gelap</string>
+  <string name="light">Terang</string>
+  <string name="select_theme">Pilih Tema</string>
+  <string name="cancel">Batal</string>
+  <string name="select">Pilih</string>
+</resources>
