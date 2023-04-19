@@ -36,7 +36,7 @@ class FavoriteAbleRepoAdapter :
                 }
                 tvOwnerName.text = owner?.login
                 tvRepoDescription.text = repo.description
-                repoLanguage.isVisible = repo.language.isNullOrEmpty()
+                repoLanguage.isVisible = !repo.language.isNullOrEmpty()
                 repoLanguage.text = repo.language
                 tvStarCount.text = repo.stargazersCount.toString()
 
