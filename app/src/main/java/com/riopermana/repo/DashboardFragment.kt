@@ -13,7 +13,7 @@ import com.riopermana.repo.databinding.FragmentDashboardBinding
 class DashboardFragment : Fragment() {
 
     private var _binding : FragmentDashboardBinding? = null
-    private val binding : FragmentDashboardBinding get() = _binding!!
+    private val binding : FragmentDashboardBinding get() = requireNotNull(_binding)
 
     override fun onCreateView(
         inflater: LayoutInflater,

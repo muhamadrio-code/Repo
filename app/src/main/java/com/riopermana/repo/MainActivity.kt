@@ -1,10 +1,7 @@
 package com.riopermana.repo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
+import androidx.appcompat.app.AppCompatActivity
 import com.riopermana.repo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
