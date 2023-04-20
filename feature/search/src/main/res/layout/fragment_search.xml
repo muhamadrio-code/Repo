@@ -12,7 +12,6 @@
     app:liftOnScroll="true">
 
     <com.google.android.material.appbar.MaterialToolbar
-      android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
       style="@style/Widget.Material3.AppBarLayout"
@@ -57,7 +56,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
   <TextView
-    android:id="@+id/error_message"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:text="tidak ada data"

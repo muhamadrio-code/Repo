@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="favorite">favorite</string>
-  <string name="theme">tema</string>
-  <string name="no_data">Tidak ada data</string>
 </resources>

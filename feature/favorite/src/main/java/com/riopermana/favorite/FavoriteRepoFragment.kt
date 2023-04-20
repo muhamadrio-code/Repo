@@ -6,14 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import com.riopermana.core.data.ResourceState
 import com.riopermana.core.presentation.FavoriteAbleRepoAdapter
 import com.riopermana.favorite.databinding.FragmentFavoriteBinding
 import com.riopermana.favorite.di.inject

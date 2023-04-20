@@ -9,6 +9,7 @@
   <ImageButton
     android:id="@+id/btn_back"
     android:layout_width="wrap_content"
+    android:contentDescription="@string/left_arrow"
     android:layout_height="wrap_content"
     android:src="@drawable/ic_arrow_back"
     android:layout_margin="16dp"
@@ -39,6 +40,7 @@
     android:layout_height="40dp"
     android:layout_marginTop="32dp"
     android:layout_marginStart="16dp"
+    android:contentDescription="TODO"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/btn_back"
     tools:srcCompat="@tools:sample/avatars" />
@@ -167,7 +169,6 @@
     tools:text="1231" />
 
   <View
-    android:id="@+id/divider2"
     android:layout_width="match_parent"
     android:layout_height="1dp"
     android:layout_marginVertical="16dp"

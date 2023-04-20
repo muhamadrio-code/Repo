@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:id="@+id/dashboard_navigation"
   app:startDestination="@id/searchFragment">
   <fragment
     android:id="@+id/searchFragment"
@@ -12,6 +11,7 @@
     android:name="com.riopermana.settings.SettingsFragment"
     android:label="SettingsFragment" />
 
+  <!--suppress AndroidDomInspection -->
   <fragment
     android:id="@+id/favoriteFragment"
     app:moduleName="favorite"

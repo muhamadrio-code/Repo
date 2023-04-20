@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="repo_details_deeplink" translatable="false">repo-app://com.riopermana.repo/repo_details/{repoId}</string>
-
   <string name="title_favorite" translatable="false">Favorite Repo</string>
+  <string name="profile_picture_content_description">profile picture</string>
 </resources>
