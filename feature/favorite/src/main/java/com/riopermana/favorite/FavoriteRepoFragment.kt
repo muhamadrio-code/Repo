@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.riopermana.core.data.ResourceState
 import com.riopermana.core.presentation.FavoriteAbleRepoAdapter
 import com.riopermana.favorite.databinding.FragmentFavoriteBinding
 import com.riopermana.favorite.di.inject
@@ -26,7 +29,7 @@ class FavoriteRepoFragment : Fragment() {
     private val viewModel: FavoriteRepoViewModel by viewModels { favoriteFeatureViewModelFactory }
 
     private var _binding: FragmentFavoriteBinding? = null
-    private val binding: FragmentFavoriteBinding get() = _binding!!
+    private val binding: FragmentFavoriteBinding get() = requireNotNull(_binding)
     private lateinit var adapter: FavoriteAbleRepoAdapter
 
     override fun onAttach(context: Context) {
@@ -66,9 +69,18 @@ class FavoriteRepoFragment : Fragment() {
     private fun subscribeObserver() {
         lifecycleScope.launch {
             viewModel.favoriteUserResource.collect { resource ->
+                showLoading(resource.state is ResourceState.Loading)
+                binding.tvMessage.isVisible = !resource.data.isNullOrEmpty()
+                if (resource.data.isNullOrEmpty()) {
+                    binding.tvMessage.text = getString(R.string.no_data)
+                }
                 adapter.submitList(resource.data)
             }
         }
+    }
+
+    private fun showLoading(isVisible: Boolean) {
+        binding.loadingIndicator.isVisible = isVisible
     }
 
 

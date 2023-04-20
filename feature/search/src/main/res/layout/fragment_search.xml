@@ -54,13 +54,4 @@
     android:indeterminate="true"
     android:visibility="gone"
     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:text="tidak ada data"
-    android:layout_gravity="center"
-    android:visibility="gone"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
