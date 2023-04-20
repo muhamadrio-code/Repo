@@ -2,4 +2,5 @@
 <resources>
   <string name="favorite_title">Favorite</string>
   <string name="no_data">No Data</string>
+  <string name="removed_from_favorite">Removed from favorite</string>
 </resources>

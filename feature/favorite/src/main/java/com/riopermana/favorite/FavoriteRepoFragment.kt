@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import com.riopermana.core.data.Resource
+import com.google.android.material.snackbar.Snackbar
 import com.riopermana.core.data.ResourceState
 import com.riopermana.core.presentation.FavoriteAbleRepoAdapter
 import com.riopermana.favorite.databinding.FragmentFavoriteBinding
@@ -52,6 +52,7 @@ class FavoriteRepoFragment : Fragment() {
         adapter = FavoriteAbleRepoAdapter()
         binding.favoriteRepoList.adapter = adapter
         adapter.setToggleFavoriteClickListener {
+            Snackbar.make(binding.root, R.string.removed_from_favorite, Snackbar.LENGTH_SHORT).show()
             viewModel.toggleFavoriteRepo(it)
         }
         adapter.setOnItemClickListener { repoId ->
@@ -70,7 +71,7 @@ class FavoriteRepoFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.favoriteUserResource.collect { resource ->
                 showLoading(resource.state is ResourceState.Loading)
-                binding.tvMessage.isVisible = !resource.data.isNullOrEmpty()
+                binding.tvMessage.isVisible = resource.data.isNullOrEmpty() && resource.state !is ResourceState.Loading
                 if (resource.data.isNullOrEmpty()) {
                     binding.tvMessage.text = getString(R.string.no_data)
                 }

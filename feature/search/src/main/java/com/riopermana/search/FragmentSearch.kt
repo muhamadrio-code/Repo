@@ -14,6 +14,7 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.riopermana.core.data.ResourceState
 import com.riopermana.core.presentation.FavoriteAbleRepoAdapter
 import com.riopermana.search.databinding.FragmentSearchBinding
@@ -61,8 +62,10 @@ class FragmentSearch : Fragment(), SearchView.OnQueryTextListener {
 
     private fun setupRecyclerView() {
         adapter = FavoriteAbleRepoAdapter()
-        adapter.setToggleFavoriteClickListener {
-            viewModel.toggleFavoriteRepo(it)
+        adapter.setToggleFavoriteClickListener { item ->
+            val message = if (item.isFavorite) R.string.added_favorite else R.string.removed_favorite
+            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+            viewModel.toggleFavoriteRepo(item)
         }
         adapter.setOnItemClickListener { repoId ->
             val request = NavDeepLinkRequest.Builder

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="favorite">Favorit</string>
+  <string name="added_favorite">Ditambahkan ke favorit</string>
+  <string name="removed_favorite">Dihapus dari favorit</string>
 </resources>
