@@ -46,4 +46,5 @@ dependencies {
     implementation project(':feature:details')
 
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.6.0-alpha09"
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 }
