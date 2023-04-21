@@ -29,7 +29,7 @@ class FragmentSearch : Fragment(), SearchView.OnQueryTextListener {
     private val binding: FragmentSearchBinding get() = requireNotNull(_binding)
 
     private val viewModel: SearchViewModel by viewModels()
-    private lateinit var adapter: FavoriteAbleRepoAdapter
+    private var adapter: FavoriteAbleRepoAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,13 +46,15 @@ class FragmentSearch : Fragment(), SearchView.OnQueryTextListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        adapter = null
+
     }
 
     private fun subscribeCollector() {
         lifecycleScope.launch {
             viewModel.resourceStateFlow.flowWithLifecycle(lifecycle).collect { resource ->
                 resource ?: return@collect
-                adapter.submitList(resource.data)
+                adapter?.submitList(resource.data)
                 showLoading(resource.state is ResourceState.Loading)
             }
         }
@@ -68,12 +70,12 @@ class FragmentSearch : Fragment(), SearchView.OnQueryTextListener {
 
     private fun setupRecyclerView() {
         adapter = FavoriteAbleRepoAdapter()
-        adapter.setToggleFavoriteClickListener { item ->
+        adapter?.setToggleFavoriteClickListener { item ->
             val message = if (item.isFavorite) R.string.added_favorite else R.string.removed_favorite
             Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
             viewModel.toggleFavoriteRepo(item)
         }
-        adapter.setOnItemClickListener { repoId ->
+        adapter?.setOnItemClickListener { repoId ->
             val request = NavDeepLinkRequest.Builder
                 .fromUri(
                     getString(com.riopermana.core.R.string.repo_details_deeplink).replace(
