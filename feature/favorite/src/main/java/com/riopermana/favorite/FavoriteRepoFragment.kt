@@ -31,7 +31,7 @@ class FavoriteRepoFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding: FragmentFavoriteBinding get() = requireNotNull(_binding)
-    private lateinit var adapter: FavoriteAbleRepoAdapter
+    private var adapter: FavoriteAbleRepoAdapter? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -52,16 +52,17 @@ class FavoriteRepoFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        adapter = null
     }
 
     private fun setupRecyclerView() {
         adapter = FavoriteAbleRepoAdapter()
         binding.favoriteRepoList.adapter = adapter
-        adapter.setToggleFavoriteClickListener {
+        adapter?.setToggleFavoriteClickListener {
             Snackbar.make(binding.root, R.string.removed_from_favorite, Snackbar.LENGTH_SHORT).show()
             viewModel.toggleFavoriteRepo(it)
         }
-        adapter.setOnItemClickListener { repoId ->
+        adapter?.setOnItemClickListener { repoId ->
             val request = NavDeepLinkRequest.Builder
                 .fromUri(
                     getString(com.riopermana.core.R.string.repo_details_deeplink).replace(
@@ -81,7 +82,7 @@ class FavoriteRepoFragment : Fragment() {
                 if (resource.data.isNullOrEmpty()) {
                     binding.tvMessage.text = getString(R.string.no_data)
                 }
-                adapter.submitList(resource.data)
+                adapter?.submitList(resource.data)
             }
         }
     }
