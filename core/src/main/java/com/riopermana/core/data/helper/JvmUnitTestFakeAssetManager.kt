@@ -1,4 +1,4 @@
-package com.riopermana.core.data.network.helper
+package com.riopermana.core.data.helper
 
 import androidx.annotation.VisibleForTesting
 import com.riopermana.core.data.network.fake.FakeAssetManager

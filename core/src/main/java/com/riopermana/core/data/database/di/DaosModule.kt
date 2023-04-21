@@ -1,6 +1,7 @@
 package com.riopermana.core.data.database.di
 
 import com.riopermana.core.data.database.RepoDatabase
+import com.riopermana.core.data.database.dao.RepoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,5 +14,5 @@ object DaosModule {
 
     @Singleton
     @Provides
-    fun provideRepoDao(database: RepoDatabase) = database.repoDao
+    fun provideRepoDao(database: RepoDatabase) : RepoDao = database.repoDao
 }
