@@ -6,3 +6,7 @@ plugins {
     id("com.google.dagger.hilt.android") version "2.44" apply false
     id 'com.android.dynamic-feature' version '7.4.1' apply false
 }
+
+ext {
+    coroutines_version = "1.6.4"
+}

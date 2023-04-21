@@ -1,5 +1,6 @@
 package com.riopermana.core.data.network.di
 
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.riopermana.core.BuildConfig
 import com.riopermana.core.data.network.ApiService
@@ -13,7 +14,6 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -24,9 +24,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitFactoryConverter(): Converter.Factory = GsonConverterFactory.create(
-        GsonBuilder().serializeNulls().create()
-    )
+    fun provideGson(): Gson = GsonBuilder().serializeNulls().create()
 
     @Provides
     @Singleton
@@ -52,11 +50,13 @@ object NetworkModule {
     @Singleton
     fun provideApiService(
         client: OkHttpClient,
-        retrofitConverterFactory: Converter.Factory
+        gson: Gson
     ) : ApiService = Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
         .client(client)
-        .addConverterFactory(retrofitConverterFactory)
+        .addConverterFactory(
+            GsonConverterFactory.create(gson)
+        )
         .build()
         .create(ApiService::class.java)
 
