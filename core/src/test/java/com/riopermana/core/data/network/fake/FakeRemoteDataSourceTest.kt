@@ -1,7 +1,6 @@
 package com.riopermana.core.data.network.fake
 
 import com.google.gson.GsonBuilder
-import com.riopermana.core.data.helper.JvmUnitTestFakeAssetManager
 import com.riopermana.core.data.network.model.OwnerNetwork
 import com.riopermana.core.data.network.model.RepoNetwork
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -22,8 +21,7 @@ class FakeRemoteDataSourceTest {
     fun setUp() {
         subject = FakeRemoteDataSource(
             dispatcher = dispatcher,
-            gson = GsonBuilder().serializeNulls().create(),
-            assetsManager = JvmUnitTestFakeAssetManager
+            gson = GsonBuilder().serializeNulls().create()
         )
     }
 
