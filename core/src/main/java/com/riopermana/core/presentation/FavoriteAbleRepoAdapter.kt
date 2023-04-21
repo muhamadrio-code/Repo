@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.dispose
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.riopermana.core.databinding.RepoItemLayoutBinding
@@ -34,6 +35,7 @@ class FavoriteAbleRepoAdapter :
                 ownerPicture.load(owner?.avatarUrl){
                     transformations(CircleCropTransformation())
                 }
+
                 tvOwnerName.text = owner?.login
                 tvRepoDescription.text = repo.description
                 repoLanguage.isVisible = !repo.language.isNullOrEmpty()
@@ -54,6 +56,10 @@ class FavoriteAbleRepoAdapter :
                 }
             }
         }
+
+        fun dispose() {
+            binding.ownerPicture.dispose()
+        }
     }
 
     fun setToggleFavoriteClickListener(listener: (FavoriteAbleRepo) -> Unit) {
@@ -62,6 +68,11 @@ class FavoriteAbleRepoAdapter :
 
     fun setOnItemClickListener(listener: (Int) -> Unit) {
         onItemClickListener = listener
+    }
+
+    override fun onViewRecycled(holder: FavoriteAbleRepoViewHolder) {
+        super.onViewRecycled(holder)
+        holder.dispose()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAbleRepoViewHolder {

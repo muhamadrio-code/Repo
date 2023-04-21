@@ -9,6 +9,7 @@ import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
@@ -48,6 +49,11 @@ class FavoriteRepoFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setupRecyclerView() {
         adapter = FavoriteAbleRepoAdapter()
         binding.favoriteRepoList.adapter = adapter
@@ -69,7 +75,7 @@ class FavoriteRepoFragment : Fragment() {
 
     private fun subscribeObserver() {
         lifecycleScope.launch {
-            viewModel.favoriteUserResource.collect { resource ->
+            viewModel.favoriteUserResource.flowWithLifecycle(lifecycle).collect { resource ->
                 showLoading(resource.state is ResourceState.Loading)
                 binding.tvMessage.isVisible = resource.data.isNullOrEmpty() && resource.state !is ResourceState.Loading
                 if (resource.data.isNullOrEmpty()) {

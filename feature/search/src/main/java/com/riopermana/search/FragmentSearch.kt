@@ -9,6 +9,7 @@ import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
@@ -25,7 +26,7 @@ import kotlinx.coroutines.launch
 class FragmentSearch : Fragment(), SearchView.OnQueryTextListener {
 
     private var _binding: FragmentSearchBinding? = null
-    private val binding: FragmentSearchBinding get() = _binding!!
+    private val binding: FragmentSearchBinding get() = requireNotNull(_binding)
 
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var adapter: FavoriteAbleRepoAdapter
@@ -42,9 +43,14 @@ class FragmentSearch : Fragment(), SearchView.OnQueryTextListener {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun subscribeCollector() {
         lifecycleScope.launch {
-            viewModel.resourceStateFlow.collect { resource ->
+            viewModel.resourceStateFlow.flowWithLifecycle(lifecycle).collect { resource ->
                 resource ?: return@collect
                 adapter.submitList(resource.data)
                 showLoading(resource.state is ResourceState.Loading)

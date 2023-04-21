@@ -29,4 +29,9 @@ class DashboardFragment : Fragment() {
         val navHost = childFragmentManager.findFragmentById(R.id.dashboard_fragment_container) as NavHostFragment
         binding.bottomNavigation.setupWithNavController(navHost.findNavController())
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
