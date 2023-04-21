@@ -1,7 +1,7 @@
 package com.riopermana.core.data.network.fake
 
 import com.google.gson.GsonBuilder
-import com.riopermana.core.data.network.helper.JvmUnitTestFakeAssetManager
+import com.riopermana.core.data.helper.JvmUnitTestFakeAssetManager
 import com.riopermana.core.data.network.model.OwnerNetwork
 import com.riopermana.core.data.network.model.RepoNetwork
 import kotlinx.coroutines.ExperimentalCoroutinesApi

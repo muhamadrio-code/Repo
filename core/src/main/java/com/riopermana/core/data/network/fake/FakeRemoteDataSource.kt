@@ -2,14 +2,13 @@ package com.riopermana.core.data.network.fake
 
 import com.google.gson.Gson
 import com.riopermana.core.data.network.RemoteDataSource
-import com.riopermana.core.data.network.helper.JvmUnitTestFakeAssetManager
+import com.riopermana.core.data.helper.JvmUnitTestFakeAssetManager
 import com.riopermana.core.data.network.model.RepoNetwork
 import com.riopermana.core.data.network.model.ResponseData
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class FakeRemoteDataSource @Inject constructor(
+class FakeRemoteDataSource (
     private val dispatcher: CoroutineDispatcher,
     private val gson: Gson,
     private val assetsManager: FakeAssetManager = JvmUnitTestFakeAssetManager
