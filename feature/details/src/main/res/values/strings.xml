@@ -5,4 +5,5 @@
   <string name="stars" translatable="false">Stars</string>
   <string name="github" translatable="false">Github</string>
   <string name="left_arrow" translatable="false">left arrow</string>
+  <string name="details_profile_picture">Profile Picture</string>
 </resources>
